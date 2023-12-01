@@ -45,7 +45,7 @@ let search s =
   let get_num s =
     let n_str = Str.matched_string s in
     List.assoc_opt n_str number_map
-    |> Option.value ~default:(Char.code n_str.[0] - 48)
+    |> Option.value ~default:(Char.code n_str.[0] - Char.code '0')
   in
   let _ = Str.search_forward regex s 0 in
   let n1 = get_num s in
