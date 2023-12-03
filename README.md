@@ -1,7 +1,7 @@
 # Advent of Code 2023
 My solutions in OCaml to Advent of Code 2023
 
-# Running
+## Running
 
 Example: Day 01
 ```bash
