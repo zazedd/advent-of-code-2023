@@ -1,16 +1,3 @@
-let read_input path =
-  let ic = open_in path in
-  let rec read_lines acc =
-    try
-      let line = input_line ic in
-      read_lines (line :: acc)
-    with End_of_file ->
-      close_in ic;
-      List.rev acc
-  in
-  read_lines []
-
-let l = read_input "input.txt"
 let is_int c = Char.code c >= 48 && Char.code c <= 57
 
 let rec bs i j l =
@@ -54,5 +41,6 @@ let search s =
   (n1 * 10) + n2
 
 let part2 l = List.fold_left (fun acc a -> search a + acc) 0 l
+let l = Utils.read_input "src/01/input.txt"
 let () = part1 l |> string_of_int |> print_endline
 let () = part2 l |> string_of_int |> print_endline

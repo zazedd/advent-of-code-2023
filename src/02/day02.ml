@@ -1,16 +1,3 @@
-let read_input path =
-  let ic = open_in path in
-  let rec read_lines acc =
-    try
-      let line = input_line ic in
-      read_lines (line :: acc)
-    with End_of_file ->
-      close_in ic;
-      List.rev acc
-  in
-  read_lines []
-
-let l = read_input "input.txt"
 let get_id s = List.nth (String.split_on_char ' ' s) 1 |> int_of_string
 
 let check_valid s =
@@ -71,5 +58,6 @@ let rec part2 acc = function
       in
       part2 (acc + get_max_nums 0 0 0 draws) xs
 
+let l = Utils.read_input "src/02/input.txt"
 let () = part1 0 l |> string_of_int |> print_endline
 let () = part2 0 l |> string_of_int |> print_endline

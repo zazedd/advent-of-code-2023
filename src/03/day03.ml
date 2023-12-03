@@ -1,17 +1,3 @@
-let read_input path =
-  let ic = open_in path in
-  let rec read_lines acc =
-    try
-      let line = input_line ic in
-      read_lines (line :: acc)
-    with End_of_file ->
-      close_in ic;
-      List.rev acc
-  in
-  read_lines []
-
-let l = read_input "input.txt"
-
 type s = { i : int; j : int; id : char }
 type n = { i : int; j : int; length : int; num : int }
 
@@ -68,6 +54,8 @@ let part2 nums syms =
       | _ -> None)
     syms
   |> List.fold_left ( + ) 0
+
+let l = Utils.read_input "src/03/input.txt"
 
 let pairs =
   List.mapi line_to_numbers_and_symbols (List.map (fun line -> explode line) l)
